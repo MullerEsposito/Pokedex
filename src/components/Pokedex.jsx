@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import Pokemon from './Pokemon';
 import Input from "./Input";
@@ -98,7 +99,9 @@ class Pokedex extends React.Component {
 
         return (
             <div className="pokedex">
-                <Pokemon key={pokemon.id} pokemon={pokemon} />
+                <Link to={`/details/${pokemon.id}`}>
+                  <Pokemon pokemon={pokemon} />
+                </Link>
                 <div className="container-buttons">
 
                     <Input onClick={(e)=> this.handleFilterType(e)} id="all" defaultChecked={true}>
