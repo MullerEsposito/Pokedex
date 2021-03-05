@@ -14,6 +14,7 @@ class About extends Component {
                  <img 
                   style={{width: '50%'}}
                   src="https://articles.pokebattler.com/wp-content/uploads/2018/08/pokedex-kanto-1.jpg" 
+                  alt=""
                 />
            </div>
         );

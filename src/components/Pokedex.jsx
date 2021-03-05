@@ -9,11 +9,15 @@ class Pokedex extends React.Component {
     constructor(props) {
         super(props);
         const { pokemons } = this.props;
+        const favorites = localStorage.getItem('@POKEMON:Favorites') 
+          ? JSON.parse(localStorage.getItem('@POKEMON:Favorites'))
+          : [];
 
         this.state = {
             activeButton: {},
             pokemons: pokemons,
             pokemon: pokemons[0],
+            favorites,
         };
         this.handleNextPokemon = this.handleNextPokemon.bind(this);
         this.handleFilterType = this.handleFilterType.bind(this);
@@ -85,8 +89,10 @@ class Pokedex extends React.Component {
     
 
     render() {
-        const { pokemon } = this.state;
+        const { pokemon, favorites } = this.state;
         const { pokemons } = this.props;
+
+        const isFavorited = favorites.some(id => +id === pokemon.id);
 
         const pokemonInputs = pokemons.groupBy(
             groupBy => groupBy.type,
@@ -94,13 +100,13 @@ class Pokedex extends React.Component {
                     <Input onClick={(e)=> this.handleFilterType(e)} id={type[0].toLowerCase()} key={type[0]}>
                         {type[0]}
                     </Input>
-                ));
+        ));
                 
 
         return (
             <div className="pokedex">
                 <Link to={`/details/${pokemon.id}`}>
-                  <Pokemon pokemon={pokemon} />
+                  <Pokemon pokemon={pokemon} isFavorited={isFavorited} />
                 </Link>
                 <div className="container-buttons">
 

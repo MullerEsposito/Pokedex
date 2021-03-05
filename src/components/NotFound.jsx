@@ -5,7 +5,10 @@ class NotFound extends Component {
         return (
            <div>
                  <h1>Page requested not found!</h1>
-                 <img src="https://media.tenor.com/images/6dc9dc360a4b22478a245421e99c669b/tenor.gif"/>
+                 <img 
+                  src="https://media.tenor.com/images/6dc9dc360a4b22478a245421e99c669b/tenor.gif"
+                  alt=""  
+                />
            </div>
         );
     };
